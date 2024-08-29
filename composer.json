@@ -1,5 +1,5 @@
 {
-    "name": "backpack/translation-manager",
+    "name": "hncore/translation-manager",
     "description": "Translation Manager for Backpack",
     "license": "MIT",
     "authors": [
@@ -19,7 +19,7 @@
         "Laravel", "Backpack", "Backpack for Laravel", "Backpack Addon", "TranslationManager"
     ],
     "require": {
-        "backpack/crud": "^6.7",
+        "hncore/crud": "^6.7.3",
         "spatie/laravel-translation-loader": "^2.8",
         "outhebox/blade-flags": "^1.2",
         "calebporzio/sushi": "^2.4"
