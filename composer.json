@@ -19,7 +19,7 @@
         "Laravel", "Backpack", "Backpack for Laravel", "Backpack Addon", "TranslationManager"
     ],
     "require": {
-        "hncore/crud": "^6.7.3",
+        "hncore/crud": "^6.7.34",
         "spatie/laravel-translation-loader": "^2.8",
         "outhebox/blade-flags": "^1.2",
         "calebporzio/sushi": "^2.4"
