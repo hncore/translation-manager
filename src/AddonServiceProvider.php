@@ -9,7 +9,7 @@ class AddonServiceProvider extends ServiceProvider
 {
     use AutomaticServiceProvider;
 
-    protected $vendorName = 'backpack';
+    protected $vendorName = 'hncore';
     protected $packageName = 'translation-manager';
     protected $commands = [];
 }

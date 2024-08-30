@@ -18,7 +18,7 @@ This package uses the battle tested [spatie/laravel-translation-loader](https://
 
 ## Demo
 
-Try it right now, edit some translations in [our online demo](https://demo.backpackforlaravel.com/admin/translation-manager).  
+Try it right now, edit some translations in [our online demo](https://demo.hncoreforlaravel.com/admin/translation-manager).  
 
 ## Installation
 
@@ -27,7 +27,7 @@ In your Laravel + Backpack project:
 **1) Install the package using Composer**:
 
 ```bash
-composer require backpack/translation-manager
+composer require hncore/translation-manager
 ```
 
 **2) Configure the application**
@@ -52,7 +52,7 @@ php artisan migrate
 3.1) Add a menu item to `menu_items.blade.php` for easy access:
 
 ```bash
-php artisan backpack:add-menu-content "<x-backpack::menu-item title=\"Translation Manager\" icon=\"la la-stream\" :link=\"backpack_url('translation-manager')\" />"
+php artisan hncore:add-menu-content "<x-hncore::menu-item title=\"Translation Manager\" icon=\"la la-stream\" :link=\"hncore_url('translation-manager')\" />"
 ```
 
 3.2) Publish the config files:
@@ -71,9 +71,9 @@ php artisan vendor:publish --provider="Backpack\TranslationManager\AddonServiceP
 
 ![lm_list_view2](https://github.com/Laravel-Backpack/language-manager/assets/1032474/f65a24ea-473d-4fec-8ffc-b8137bcb1b9f)
 
-The list view displays a comprehensive list of all translations within your application. By default, all translations including vendor translations are displayed in the list view. If you don't want to see vendor translations, you can set the config option `load_all_registered_translation_paths` to `false` in `config/backpack/translation-manager.php`.
+The list view displays a comprehensive list of all translations within your application. By default, all translations including vendor translations are displayed in the list view. If you don't want to see vendor translations, you can set the config option `load_all_registered_translation_paths` to `false` in `config/hncore/translation-manager.php`.
 
-Additionally, if you have [Backpack Pro](https://backpackforlaravel.com/products/pro-for-unlimited-projects) installed, your admin can also see and use the filters, to quickly narrow down translations.
+Additionally, if you have [Backpack Pro](https://hncoreforlaravel.com/products/pro-for-unlimited-projects) installed, your admin can also see and use the filters, to quickly narrow down translations.
 
 ### Edit View
 
@@ -87,14 +87,14 @@ Once edited, the changes are saved to the database for persistence. All translat
 
 ![lm_editable_columns_view](https://github.com/Laravel-Backpack/language-manager/assets/1032474/88996f7c-6807-4c54-a3f8-10ab18afaa24)
 
-If you have the [Editable Columns](https://backpackforlaravel.com/products/editable-columns) package installed, the admin can directly edit translations within the List View. This provides an excellent UX - because they can translate everything much much faster, without having to switch pages.
+If you have the [Editable Columns](https://hncoreforlaravel.com/products/editable-columns) package installed, the admin can directly edit translations within the List View. This provides an excellent UX - because they can translate everything much much faster, without having to switch pages.
 
-If you don't want that behavior you can disable it in the `config/backpack/translation-manager.php` file by setting `use_editable_columns => false`. 
+If you don't want that behavior you can disable it in the `config/hncore/translation-manager.php` file by setting `use_editable_columns => false`. 
 If you don't find that file, see above the optional steps to publish the config files.
 
 ## Security
 
-If you discover any security related issues, please email cristian.tabacitu@backpackforlaravel.com instead of using the issue tracker.
+If you discover any security related issues, please email cristian.tabacitu@hncoreforlaravel.com instead of using the issue tracker.
 
 ## Credits
 
@@ -105,11 +105,11 @@ If you discover any security related issues, please email cristian.tabacitu@back
 
 ## License
 
-This project was released under MIT License, so you can install it on top of any Backpack & Laravel project. Please see the [license file](https://backpackforlaravel.com/products/translation-manager/license.md) for more information. 
+This project was released under MIT License, so you can install it on top of any Backpack & Laravel project. Please see the [license file](https://hncoreforlaravel.com/products/translation-manager/license.md) for more information. 
 
-[ico-version]: https://img.shields.io/packagist/v/backpack/translation-manager.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/backpack/translation-manager.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/hncore/translation-manager.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/hncore/translation-manager.svg?style=flat-square
 
-[link-author]: https://github.com/laravel-backpack
+[link-author]: https://github.com/laravel-hncore
 [link-contributors]: ../../contributors
-[link-downloads]: https://packagist.org/packages/backpack/translation-manager
+[link-downloads]: https://packagist.org/packages/hncore/translation-manager

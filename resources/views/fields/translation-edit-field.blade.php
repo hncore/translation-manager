@@ -1,5 +1,5 @@
 @php
-    $locales = config('backpack.crud.locales');
+    $locales = config('hncore.crud.locales');
 @endphp
 
 <div translation-edit-field data-init-function="bpFieldInitTranslationEditField" class="form-group col-sm-12 mb-3">
@@ -30,7 +30,7 @@
             <label class="form-switch switch switch-sm switch-label switch-pill switch-primary mb-0">
                 <input type="checkbox" class="switch-input form-check-input" id="switch_translation_edit_field">
             </label>
-            <label class="font-weight-normal mb-0 ml-2" for="switch_translation_edit_field">{{ ucfirst(__('backpack.translation-manager::translation_manager.show_all_languages')) }}</label>
+            <label class="font-weight-normal mb-0 ml-2" for="switch_translation_edit_field">{{ ucfirst(__('hncore.translation-manager::translation_manager.show_all_languages')) }}</label>
         </div>
     </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 @push('crud_fields_styles')
-    @bassetBlock('backpack/translation-manager/fields/translation-edit.css')
+    @bassetBlock('hncore/translation-manager/fields/translation-edit.css')
     <style>
         [translation-edit-field] [flags] {
             width: 1.5rem;
@@ -72,7 +72,7 @@
 @endpush
 
 @push('crud_fields_scripts')
-    @bassetBlock('backpack/translation-manager/fields/translation-edit.js')
+    @bassetBlock('hncore/translation-manager/fields/translation-edit.js')
     <script>
         function bpFieldInitTranslationEditField(elem) {
             let element = elem[0];

@@ -1,1 +1,1 @@
-@include('backpack.translation-manager::columns.translation-preview-table')
+@include('hncore.translation-manager::columns.translation-preview-table')

@@ -23,14 +23,14 @@ class TranslationManagerCrudController extends CrudController
     public function setup(): void
     {
         CRUD::setModel(TranslationLine::class);
-        CRUD::setRoute(config('backpack.base.route_prefix').'/translation-manager');
-        CRUD::setEntityNameStrings(__('backpack.translation-manager::translation_manager.translation_line'), __('backpack.translation-manager::translation_manager.translation_lines'));
+        CRUD::setRoute(config('hncore.base.route_prefix').'/translation-manager');
+        CRUD::setEntityNameStrings(__('hncore.translation-manager::translation_manager.translation_line'), __('hncore.translation-manager::translation_manager.translation_lines'));
 
         // access to delete button
         CRUD::setAccessCondition(['delete'], fn (TranslationLine $entry) => $entry->database);
 
         // disable create
-        if (! config('backpack.translation-manager.create', false)) {
+        if (! config('hncore.translation-manager.create', false)) {
             CRUD::denyAccess('create');
         }
     }
@@ -43,7 +43,7 @@ class TranslationManagerCrudController extends CrudController
         CRUD::addColumn([
             'name'        => 'text',
             'type'        => $this->editableColumnsEnabled() ? 'editable_text' : 'text',
-            'label'       => ucfirst(__('backpack.translation-manager::translation_manager.text')),
+            'label'       => ucfirst(__('hncore.translation-manager::translation_manager.text')),
             'value'       => fn (TranslationLine $entry): mixed => $entry->getTranslation(App::getLocale()),
             'searchLogic' => function (Builder $query, mixed $column, string $search): void {
                 $query->orWhere('search', 'like', '%'.Str::slug($search).'%');
@@ -52,7 +52,7 @@ class TranslationManagerCrudController extends CrudController
 
         CRUD::addColumn([
             'name'  => 'group_key',
-            'label' => ucfirst(__('backpack.translation-manager::translation_manager.key')),
+            'label' => ucfirst(__('hncore.translation-manager::translation_manager.key')),
             'type'  => 'custom_html',
             'value' => function (TranslationLine $entry): string {
                 return '<span class="badge" title="'.$entry->group_key.'">'.Str::limit($entry->group_key, 50).'</span>';
@@ -69,10 +69,10 @@ class TranslationManagerCrudController extends CrudController
             },
         ]);
 
-        if (config('backpack.translation-manager.display_source', false)) {
+        if (config('hncore.translation-manager.display_source', false)) {
             CRUD::addColumn([
                 'name'  => 'database',
-                'label' => ucfirst(__('backpack.translation-manager::translation_manager.source')),
+                'label' => ucfirst(__('hncore.translation-manager::translation_manager.source')),
                 'type'  => 'custom_html',
                 'value' => function (TranslationLine $entry): string {
                     $value = $entry->database ? 'database' : 'file';
@@ -88,7 +88,7 @@ class TranslationManagerCrudController extends CrudController
 
         // enable details row
         CRUD::enableDetailsRow();
-        CRUD::setDetailsRowView('backpack.translation-manager::admin.details_row');
+        CRUD::setDetailsRowView('hncore.translation-manager::admin.details_row');
 
         // set default order
         CRUD::orderBy('group', 'asc')->orderBy('key', 'asc');
@@ -109,7 +109,7 @@ class TranslationManagerCrudController extends CrudController
         CRUD::addColumn([
             'name'  => 'text',
             'type'  => 'translation-preview-table',
-            'label' => ucfirst(__('backpack.translation-manager::translation_manager.text')),
+            'label' => ucfirst(__('hncore.translation-manager::translation_manager.text')),
         ]);
     }
 
@@ -124,8 +124,8 @@ class TranslationManagerCrudController extends CrudController
         ]);
 
         $validationMessages = $this->getValidationMessagesWithLocale([
-            'group.required' => __('backpack.translation-manager::translation_manager.validation_missing_group'),
-            'key.required'   => __('backpack.translation-manager::translation_manager.validation_missing_key'),
+            'group.required' => __('hncore.translation-manager::translation_manager.validation_missing_group'),
+            'key.required'   => __('hncore.translation-manager::translation_manager.validation_missing_key'),
         ]);
 
         CRUD::setValidation($validationRule, $validationMessages);
@@ -154,7 +154,7 @@ class TranslationManagerCrudController extends CrudController
      */
     public function setupFilters(): void
     {
-        if (! backpack_pro()) {
+        if (! hncore_pro()) {
             return;
         }
 
@@ -162,7 +162,7 @@ class TranslationManagerCrudController extends CrudController
         CRUD::addFilter([
             'name'  => 'group',
             'type'  => 'select2_multiple',
-            'label' => ucfirst(__('backpack.translation-manager::translation_manager.group')),
+            'label' => ucfirst(__('hncore.translation-manager::translation_manager.group')),
         ], function (): array {
             return TranslationLine::select('group')
                 ->distinct()
@@ -176,10 +176,10 @@ class TranslationManagerCrudController extends CrudController
         CRUD::addFilter([
             'name'  => 'source',
             'type'  => 'select2',
-            'label' => ucfirst(__('backpack.translation-manager::translation_manager.source')),
+            'label' => ucfirst(__('hncore.translation-manager::translation_manager.source')),
         ], [
-            'database' => ucfirst(__('backpack.translation-manager::translation_manager.database')),
-            'file'     => ucfirst(__('backpack.translation-manager::translation_manager.file')),
+            'database' => ucfirst(__('hncore.translation-manager::translation_manager.database')),
+            'file'     => ucfirst(__('hncore.translation-manager::translation_manager.file')),
         ], function (string $option): void {
             CRUD::addClause('where', 'database', $option === 'database');
         });
@@ -190,8 +190,8 @@ class TranslationManagerCrudController extends CrudController
     {
         $attributes = [];
 
-        $groups = config('backpack.translation-manager.groups', []);
-        $canCreate = config('backpack.translation-manager.create');
+        $groups = config('hncore.translation-manager.groups', []);
+        $canCreate = config('hncore.translation-manager.create');
 
         if (! $canCreate || $forceDisabledFields) {
             $attributes = ['disabled' => 'disabled'];
@@ -199,7 +199,7 @@ class TranslationManagerCrudController extends CrudController
 
         CRUD::addField([
             'name'       => 'group',
-            'label'      => ucfirst(__('backpack.translation-manager::translation_manager.group')),
+            'label'      => ucfirst(__('hncore.translation-manager::translation_manager.group')),
             'wrapper'    => ['class' => 'form-group col-md-4'],
             'type'       => empty($groups) ? 'text' : 'select_from_array',
             'options'    => $groups,
@@ -208,7 +208,7 @@ class TranslationManagerCrudController extends CrudController
 
         CRUD::addField([
             'name'       => 'key',
-            'label'      => ucfirst(__('backpack.translation-manager::translation_manager.key')),
+            'label'      => ucfirst(__('hncore.translation-manager::translation_manager.key')),
             'type'       => 'text',
             'wrapper'    => ['class' => 'form-group col-md-8'],
             'attributes' => $attributes,
@@ -216,7 +216,7 @@ class TranslationManagerCrudController extends CrudController
 
         CRUD::addField([
             'name'  => 'text',
-            'label' => ucfirst(__('backpack.translation-manager::translation_manager.text')),
+            'label' => ucfirst(__('hncore.translation-manager::translation_manager.text')),
             'type'  => 'translation-edit-field',
         ]);
 
@@ -225,7 +225,7 @@ class TranslationManagerCrudController extends CrudController
 
     private function getValidationRuleWithLocales(array $rulesToMerge = []): array
     {
-        $locales = config('backpack.crud.locales');
+        $locales = config('hncore.crud.locales');
         $localesCount = count($locales);
 
         $rules = collect($locales)->mapWithKeys(fn ($locale, $key) => ['text.'.$key => 'bail|present'])->toArray();
@@ -237,7 +237,7 @@ class TranslationManagerCrudController extends CrudController
     private function getValidationMessagesWithLocale(array $messagesToMerge = []): array
     {
         return array_merge([
-            'text.*' => __('backpack.translation-manager::translation_manager.validation_missing_languages')], 
+            'text.*' => __('hncore.translation-manager::translation_manager.validation_missing_languages')], 
             $messagesToMerge);
     }
 }

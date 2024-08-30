@@ -2,25 +2,25 @@
     <span onclick="revertEntry(this)" data-route="{{ url($crud->route.'/'.$entry->getKey()) }}" class="btn btn-sm btn-link" data-button-type="revert">
         <span>
             <i class="la la-undo"></i>
-            {{ ucfirst(trans('backpack.translation-manager::translation_manager.revert')) }}
+            {{ ucfirst(trans('hncore.translation-manager::translation_manager.revert')) }}
         </span>
     </span>
 @endif
 
 @push('after_scripts') @if (request()->ajax()) @endpush @endif
-@bassetBlock('backpack/translation-manager/buttons/revert-button-'.app()->getLocale().'.js')
+@bassetBlock('hncore/translation-manager/buttons/revert-button-'.app()->getLocale().'.js')
 <script>
     if (typeof revertEntry !== 'function') {
         function revertEntry(button) {
             let trans = {
-                warning: '{!! addslashes(ucfirst(trans("backpack::base.warning"))) !!}',
-                cancel: '{!! addslashes(ucfirst(trans("backpack::crud.cancel"))) !!}',
-                revert: '{!! addslashes(ucfirst(trans("backpack.translation-manager::translation_manager.revert"))) !!}',
-                revert_confirm: '{!! addslashes(trans("backpack.translation-manager::translation_manager.revert_confirm")) !!}',
-                revert_confirmation_title: '{!! addslashes(trans("backpack.translation-manager::translation_manager.revert_confirmation_title")) !!}',
-                revert_confirmation_message: '{!! addslashes(trans("backpack.translation-manager::translation_manager.revert_confirmation_message")) !!}',
-                revert_confirmation_not_title: '{!! addslashes(trans("backpack.translation-manager::translation_manager.revert_confirmation_not_title")) !!}',
-                revert_confirmation_not_message: '{!! addslashes(trans("backpack.translation-manager::translation_manager.revert_confirmation_not_message")) !!}',
+                warning: '{!! addslashes(ucfirst(trans("hncore::base.warning"))) !!}',
+                cancel: '{!! addslashes(ucfirst(trans("hncore::crud.cancel"))) !!}',
+                revert: '{!! addslashes(ucfirst(trans("hncore.translation-manager::translation_manager.revert"))) !!}',
+                revert_confirm: '{!! addslashes(trans("hncore.translation-manager::translation_manager.revert_confirm")) !!}',
+                revert_confirmation_title: '{!! addslashes(trans("hncore.translation-manager::translation_manager.revert_confirmation_title")) !!}',
+                revert_confirmation_message: '{!! addslashes(trans("hncore.translation-manager::translation_manager.revert_confirmation_message")) !!}',
+                revert_confirmation_not_title: '{!! addslashes(trans("hncore.translation-manager::translation_manager.revert_confirmation_not_title")) !!}',
+                revert_confirmation_not_message: '{!! addslashes(trans("hncore.translation-manager::translation_manager.revert_confirmation_not_message")) !!}',
             };
 
             swal({

@@ -16,7 +16,7 @@ if (class_exists(\Backpack\EditableColumns\AddonServiceProvider::class)) {
 
         private function editableColumnsEnabled(): bool
         {
-            return config('backpack.translation-manager.use_editable_columns');
+            return config('hncore.translation-manager.use_editable_columns');
         }
 
         /**

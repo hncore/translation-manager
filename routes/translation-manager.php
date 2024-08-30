@@ -12,8 +12,8 @@ use Backpack\TranslationManager\Http\Controllers\TranslationManagerCrudControlle
 |
 */
 Route::group([
-    'prefix' => config('backpack.base.route_prefix', 'admin'),
-    'middleware' => ['web', config('backpack.base.middleware_key', 'admin')],
+    'prefix' => config('hncore.base.route_prefix', 'admin'),
+    'middleware' => ['web', config('hncore.base.middleware_key', 'admin')],
 ], function () {
     Route::crud('translation-manager', TranslationManagerCrudController::class);
 });

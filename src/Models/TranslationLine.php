@@ -84,9 +84,9 @@ class TranslationLine extends TranslationLineOriginal
             ]])
             ->toArray();
 
-        $filePaths = config('backpack.translation-manager.file_paths', []);
+        $filePaths = config('hncore.translation-manager.file_paths', []);
 
-        if (config('backpack.translation-manager.load_all_registered_translation_paths', true)) {
+        if (config('hncore.translation-manager.load_all_registered_translation_paths', true)) {
             $reflectionClass = new ReflectionClass(TranslationLoaderManager::class);
             $hints = $reflectionClass->getProperty('hints')->getValue(app()['translation.loader']);
             $filePaths = array_merge($filePaths, array_values($hints));
